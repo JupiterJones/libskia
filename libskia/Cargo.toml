@@ -19,16 +19,23 @@ array-box = { version = "4.1" }
 string-box = { version = "4.1" }
 value-box-ffi = { version = "4.1", features = [ "array-box", "geometry-box", "string-box"] }
 # Compositor
-compositor = { git = "https://github.com/feenkcom/compositor-rs" }
-compositor-skia = { git = "https://github.com/feenkcom/compositor-rs" }
-compositor-ffi = { git = "https://github.com/feenkcom/compositor-rs" }
-compositor-skia-ffi = { git = "https://github.com/feenkcom/compositor-rs" }
-compositor-skia-platform = { git = "https://github.com/feenkcom/compositor-rs" }
-#compositor = { path = "../../compositor-rs/compositor" }
-#compositor-skia = { path = "../../compositor-rs/compositor-skia" }
-#compositor-ffi = { path = "../../compositor-rs/compositor-ffi" }
-#compositor-skia-ffi = { path = "../../compositor-rs/compositor-skia-ffi" }
-#compositor-skia-platform = { path = "../../compositor-rs/compositor-skia-platform" }
+# Use the local compositor-rs checkout for renderer/compositor development.
+# Expected sibling layout:
+#   libskia/
+#   compositor-rs/
+#
+# Switch these back to git dependencies before preparing an upstream release
+# unless compositor-rs has already been updated and published through git.
+#compositor = { git = "https://github.com/feenkcom/compositor-rs" }
+#compositor-skia = { git = "https://github.com/feenkcom/compositor-rs" }
+#compositor-ffi = { git = "https://github.com/feenkcom/compositor-rs" }
+#compositor-skia-ffi = { git = "https://github.com/feenkcom/compositor-rs" }
+#compositor-skia-platform = { git = "https://github.com/feenkcom/compositor-rs" }
+compositor = { path = "../../compositor-rs/compositor" }
+compositor-skia = { path = "../../compositor-rs/compositor-skia" }
+compositor-ffi = { path = "../../compositor-rs/compositor-ffi" }
+compositor-skia-ffi = { path = "../../compositor-rs/compositor-skia-ffi" }
+compositor-skia-platform = { path = "../../compositor-rs/compositor-skia-platform" }
 
 [target.'cfg(any(target_os="macos", target_os="ios"))'.dependencies]
 metal = { version = "0.32", optional = true }
